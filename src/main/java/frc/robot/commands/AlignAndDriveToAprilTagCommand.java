@@ -91,22 +91,23 @@ public class AlignAndDriveToAprilTagCommand extends Command {
           //           AprilTagConstants.kID_HIGHTS.get( target.getFiducialId() ), 
           //           Units.degreesToRadians(30.0), // Measured with a protractor, or in CAD.
           //           Units.degreesToRadians( target.getPitch() ) );
-          
-          
           targetVisible = true;
         }
       }
     }
-   SmartDashboard.putNumber("Range", targetRange);
-   SmartDashboard.putNumber("Yaw", targetYaw);
-    double turnSpeed = rotationController.calculate(targetYaw, 0.0);
-    double driveSpeed = driveController.calculate(targetRange, DISTANCE_SETPOINT); // Stop at 0.5m
+    //if there is an april tag then calculate and track
+    if (targetVisible) {
+      SmartDashboard.putNumber("Range", targetRange);
+      SmartDashboard.putNumber("Yaw", targetYaw);
+      double turnSpeed = rotationController.calculate(targetYaw, 0.0);
+      double driveSpeed = driveController.calculate(targetRange, DISTANCE_SETPOINT); // Stop at 0.5m
 
-    turnSpeed = MathUtil.clamp(turnSpeed, -MAX_ROT_SPEED, MAX_ROT_SPEED); //Math.max(-MAX_ROT_SPEED, Math.min(MAX_ROT_SPEED, turnSpeed));
-    driveSpeed = MathUtil.clamp(driveSpeed, MAX_DRIVE_SPEED, MAX_DRIVE_SPEED);
+      turnSpeed = MathUtil.clamp(turnSpeed, -MAX_ROT_SPEED, MAX_ROT_SPEED); //Math.max(-MAX_ROT_SPEED, Math.min(MAX_ROT_SPEED, turnSpeed));
+      driveSpeed = MathUtil.clamp(driveSpeed, MAX_DRIVE_SPEED, MAX_DRIVE_SPEED);
 
-    ChassisSpeeds speeds = new ChassisSpeeds(driveSpeed, 0.0, turnSpeed);
-    m_drive.drive(speeds, false);
+      ChassisSpeeds speeds = new ChassisSpeeds(driveSpeed, 0.0, turnSpeed);
+      m_drive.drive(speeds, false);
+    }
   }
 
   @Override
