@@ -15,6 +15,7 @@ import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.filter.Debouncer.DebounceType;
 import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -80,8 +81,8 @@ public class RobotContainer {
     .whileTrue(
       new RunCommand(
       () -> m_DriveSubsystem.drive(
-          -MathUtil.applyDeadband(m_driverGamepad.getLeftY(), UsbPort.kDriveDeadband),
-          -MathUtil.applyDeadband(m_driverGamepad.getLeftX(), UsbPort.kDriveDeadband),
+          MathUtil.applyDeadband(m_driverGamepad.getLeftY(), UsbPort.kDriveDeadband),
+          MathUtil.applyDeadband(m_driverGamepad.getLeftX(), UsbPort.kDriveDeadband),
           -MathUtil.applyDeadband(m_driverGamepad.getRightX(), UsbPort.kDriveDeadband),
           false),
       m_DriveSubsystem));
@@ -115,7 +116,8 @@ public class RobotContainer {
     // .withTimeout(10));
 
     new JoystickButton(m_driverGamepad, Button.kB.value)
-    .whileTrue(new AlignAndDriveToAprilTagCommand(m_DriveSubsystem, m_vision, 4));
+    .whileTrue(new AlignAndDriveToAprilTagCommand(m_DriveSubsystem, m_vision, 6))
+    .debounce(1);
   }
     
   private void configurePathPlaner(){
