@@ -43,9 +43,9 @@ public class AlignAndDriveToAprilTagCommand extends Command {
   private static final double ROTATION_TOLERANCE = 1; // Degrees
   private static final double DISTANCE_TOLERANCE = 0.1; // Meters (50 cm)
   private static final double MAX_ROT_SPEED = 1.5; // Radians/sec
-  private static final double MAX_X_DRIVE_SPEED = 1.0; // Meters/sec
+  private static final double MAX_X_DRIVE_SPEED = 0.7; // Meters/sec
   private static final double MAX_Y_DRIVE_SPEED = 0.6; // Meters/sec
-  private static final double XDISTANCE_SETPOINT = 0.4; //Meters
+  private static final double XDISTANCE_SETPOINT = 0.6; //Meters
   private static final double YDISTANCE_SETPOINT = 0.0; //Meters
   // private static final double VISION_DES_ANGLE_deg = 0.0;
   // private static final double VISION_DES_RANGE_m = 1.25;
@@ -57,7 +57,7 @@ public class AlignAndDriveToAprilTagCommand extends Command {
       addRequirements(driveSubsystem, vision);
 
       rotationController = new PIDController(0.035, 0.0, 0.0);
-      XDriveController = new PIDController(1.0, 0.0, 0.0);
+      XDriveController = new PIDController(0.7, 0.0, 0.0);
       YDriveController = new PIDController(0.5, 0, 0);
 
       rotationController.setTolerance(ROTATION_TOLERANCE);
