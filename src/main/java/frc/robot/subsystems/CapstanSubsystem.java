@@ -136,12 +136,13 @@ public class CapstanSubsystem extends SubsystemBase {
   }
   
   private void setSpeed(double speed) {
-    // Lower limit
-    if (getElevatorPostion() <= 10 && speed < 0) {
-      stopMotors();
-    }
-    else {m_elevatorLeader.set(-speed);}
+    // // Lower limit
+    // if (getElevatorPostion() <= 10 && speed < 0) {
+    //   stopMotors();
+    // }
+    // else {m_elevatorLeader.set(-speed);}
     // m_elevatorLeader.set(-rateLimiter.calculate(speed));
+    m_elevatorLeader.set(-speed);
   }
 
   private void setSpeedWithLimit(double speed){

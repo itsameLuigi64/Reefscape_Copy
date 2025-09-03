@@ -198,14 +198,16 @@ public class RobotContainer {
       m_operatorGamepad.povUp()
       .whileTrue(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kCoralL2));
 
-      m_operatorGamepad.leftTrigger(0.1)
-      .whileTrue(m_CapstanSubsystem.moveToSetpointCommand(Setpoint.kL4)
-      .andThen(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kL4)));
+      //THese Work
+      // m_operatorGamepad.leftTrigger(0.1)
+      // .whileTrue(m_CapstanSubsystem.moveToSetpointCommand(Setpoint.kL4)
+      // .andThen(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kL4)));
 
-      m_operatorGamepad.rightTrigger(0.1)
-      .whileTrue(m_CapstanSubsystem.moveToSetpointCommand(Setpoint.kCoralL3)
-      .andThen(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kCoralL3)));
+      // m_operatorGamepad.rightTrigger(0.1)
+      // .whileTrue(m_CapstanSubsystem.moveToSetpointCommand(Setpoint.kCoralL3)
+      // .andThen(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kCoralL3)));
       
+      //These were not bound
       // m_operatorGamepad.start()
       // .whileTrue(m_CoralSubsystem.shootToL4Command()
       // .andThen(m_WristsSubsystem.moveCoralWristToSetpointCommand(Setpoint.kStore)));
