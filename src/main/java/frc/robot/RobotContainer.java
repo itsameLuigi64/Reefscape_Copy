@@ -45,7 +45,9 @@ public class RobotContainer {
   
   // The driver's controller
   private final XboxController m_driverGamepad = new XboxController(UsbPort.kDriveControler);
+  private final XboxController m_operatorGamepad = new XboxController(UsbPort.kOperatorControler);
   private final SendableChooser<Command> m_pathChooser;
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -100,10 +102,10 @@ public class RobotContainer {
       m_DriveSubsystem
     ));
 
-    new JoystickButton(m_driverGamepad, Button.kA.value)
+    new JoystickButton(m_operatorGamepad,Button.kA.value)
     .onTrue(m_LED.runPatternFor(LEDPattern.solid(Color.kOrange), 2));
 
-    new JoystickButton(m_driverGamepad, Button.kB.value)
+    new JoystickButton(m_operatorGamepad,Button.kB.value)
     .whileTrue(m_LED.discoMode());
   }
 
