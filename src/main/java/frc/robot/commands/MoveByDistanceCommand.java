@@ -59,7 +59,7 @@ public class MoveByDistanceCommand extends Command {
         //Setpoints
         xController.setSetpoint(targetX);
         yController.setSetpoint(targetY);
-        rotController.setSetpoint(Units.degreesToRadians(angleTOLERANCE));
+        rotController.setSetpoint(targetRot);
     }
 
     @Override
