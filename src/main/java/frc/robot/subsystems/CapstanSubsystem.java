@@ -182,9 +182,11 @@ public class CapstanSubsystem extends SubsystemBase {
             case kStore:
               elevatorCurrentTarget = ElevatorSetpoints.kStore;
               currentSetpoint = Setpoint.kStore;
+              break;
             case kProcessor:
               elevatorCurrentTarget = ElevatorSetpoints.kProcessor;
               currentSetpoint = Setpoint.kProcessor;
+              break;
             case kFeederStation:
               elevatorCurrentTarget = ElevatorSetpoints.kFeederStation;
               currentSetpoint = Setpoint.kFeederStation;
